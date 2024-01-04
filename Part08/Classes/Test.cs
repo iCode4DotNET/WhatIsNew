@@ -30,25 +30,38 @@ namespace Part08.Classes
     #endregion
 
     #region [ Default interface members ]
+   
+    interface INormalLog
+    {
+        void Log2File();
+    }
+
+    
     interface ILogger
     {
+        public static string Prefix = "Default Prefix : ";
+
         public void Log(string text)
         {
             Console.WriteLine(text);
         }
 
-        public static string Prefix = "Default Prefix : ";
         public void Log2(string text)
         {
             Console.WriteLine(Prefix + text);
         }
     }
 
-    class MyLog : ILogger
+    class MyLog : ILogger , INormalLog
     {
+        public void Log2File()
+        {
+            //throw new NotImplementedException();
+        }
+
         void ILogger.Log(string text)
         {
-            Console.WriteLine("Inside My Log : " + text);
+            Console.WriteLine("Inside Class MyLog : " + text);
         }
     }
 
@@ -56,7 +69,7 @@ namespace Part08.Classes
     {
         public MyLog2()
         {
-            ILogger.Prefix = "My Log 2 Prefix : ";
+            ILogger.Prefix = "In Class MyLog2 => Prefix : ";
         }
     } 
     #endregion

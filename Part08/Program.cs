@@ -2,6 +2,8 @@
 using System;
 using System.IO;
 
+//using Part08.Classes;
+
 namespace Part08
 {
     internal class Program
@@ -30,16 +32,22 @@ namespace Part08
 
             #region [ Null - coalescing assignment ]
             
+            bool? isMarried = null;
+            
             //The ??= operator assigns a variable only if it’s null
 
             var s = "";
+            
+            //Old Style
             if (s == null)
                 s = "Hello, world";
+
             s ??= "Hello, world";
+
             #endregion
 
             #region [ Using declarations ]
-           
+
             //If you omit the brackets and statement block following a using statement, it
             //becomes a using declaration.
             //The resource is then disposed when execution falls outside the enclosing statement block:
@@ -60,7 +68,13 @@ namespace Part08
             #endregion
 
             #region [ Default interface members ]
-            
+
+            Console.Clear();
+
+            var log0 = new MyLog();
+            log0.Log2File(); // مجبور شد این متد رو پیاده سازی کند پس بهش دسترسی هم دارد
+            //log0.Log(DOES NOT EXISTS)
+
             var log1 = (ILogger)new MyLog();
             log1.Log("hello");
 
@@ -69,6 +83,10 @@ namespace Part08
 
             var log3 = (ILogger)new MyLog2();
             log3.Log2("hello");
+
+
+            Console.ReadKey();  
+
 
             #endregion
 
@@ -92,6 +110,7 @@ namespace Part08
             title = code switch
             {
                 111 => "a111",
+                222 => "A222",
                 _ => "DEFAULT",
             };
 
@@ -142,6 +161,7 @@ namespace Part08
            #nullable enable // Enable nullable reference types from this point on
 
             string s1 = null; // Generates a compiler warning! (s1 is nonnullable)
+            
             string? s2 = null; // OK: s2 is nullable reference type
 
             Console.WriteLine(s1.ToString());

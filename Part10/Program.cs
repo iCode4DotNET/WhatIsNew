@@ -19,6 +19,8 @@ var a2 = a1 with { E = 10 };
 Console.WriteLine(a1);
 Console.WriteLine(a2);
 
+Console.ReadKey();  
+
 #endregion
 
 
@@ -101,5 +103,15 @@ if (obj.Scheme.Length == 5) { }
 if (obj is Uri { Scheme: { Length: 5 } }) { }
 
 if (obj is Uri { Scheme.Length: 5 }) { }
+
+
+#region [ آنچه در سی شارپ گذشت ]
+// x = i++ ; 
+// x = i + 1 ; 
+
+// x = 10 , a = 10 
+// x = a++; // x = 10 , a = 11
+// x = ++a; // x = 11 , a = 11 
+#endregion
 
 #endregion

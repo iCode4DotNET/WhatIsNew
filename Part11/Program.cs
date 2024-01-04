@@ -7,8 +7,16 @@
 //doubling up. This makes it easy to represent JSON, XML, and HTML
 //literals, as well as regular expressions and source code:
 
+//string raw0 = "<file path="c:\temp\test.txt"></file>";
+string raw01 = "<file path=\"c:\temp\test.txt\"></file>";
 
 string raw = """<file path="c:\temp\test.txt"></file>""";
+
+
+Console.WriteLine("ali\reza\tina\nima");
+Console.Write("123456789\reza");
+
+Console.ReadKey();
 
 Console.WriteLine(raw); // <file path="c:\temp\test.txt"></file>
 
@@ -46,7 +54,11 @@ Console.WriteLine(numbers is [0, .., 3]);      // false
 //Person person = new Person();
 // Required member 'Person.FirstName' must be set in the object initializer or attribute constructor.	
 
-var person = new Person { FirstName = "Soroush", LastName = "Sadr" };
+var person = new Person 
+{
+    FirstName = "Soroush", 
+    LastName = "Sadr" 
+};
 
 #endregion
 

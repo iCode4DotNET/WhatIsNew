@@ -39,6 +39,8 @@ Console.WriteLine(p.Y);
 
 #region [ Collection expressions ]
 
+char[] vowels0 = new char[] { 'a', 'e', 'i', 'o', 'u' };
+
 char[] vowels = { 'a', 'e', 'i', 'o', 'u' };
 
 char[] vowels2 = ['a', 'e', 'i', 'o', 'u'];

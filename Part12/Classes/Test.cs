@@ -24,7 +24,7 @@ internal class Test
 }
 
 
-#region [ New Ctor Style ]
+#region [ New Ctor Style (Primary Constructor) ]
 /// <summary>
 /// Include a parameter list directly after a class (or struct) declaration
 /// </summary>
@@ -34,4 +34,6 @@ internal class Person(string firstName, string lastName)
 {
     public void Print() => Console.WriteLine(firstName + " " + lastName);
 } 
+
+
 #endregion

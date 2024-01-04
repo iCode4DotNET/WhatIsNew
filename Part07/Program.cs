@@ -1,5 +1,7 @@
 ﻿using Part07.Classes;
 using System;
+using System.CodeDom;
+using System.Globalization;
 
 namespace Part07
 {
@@ -20,12 +22,23 @@ namespace Part07
             Console.WriteLine(bin);
             #endregion
 
+            Console.ReadKey();
+
             #region [ Type patterns and pattern variables ]
 
             //You can also introduce variables on the fly with the is operator.
             //These are called pattern variables
 
+
+           
+
             object myObjVarible = "Hello";
+
+            //if(myObjVarible is string)
+            //{
+            //    var s2 = (string)myObjVarible;   
+            //}
+
             if (myObjVarible is string s)
                 Console.WriteLine(s.Length);
 
@@ -49,6 +62,7 @@ namespace Part07
                 case null:
                     Console.WriteLine("Nothing");
                     break;
+               
             }
             #endregion
 
@@ -58,9 +72,14 @@ namespace Part07
 
             #region [ Deconstruction ]
             var person = new Person2("Soroush Sadr");
+            
+            // old style
+            //person.Deconstruct(out string fn, out string ln);
+
             var (first, last) = person;
             Console.WriteLine(first);
             Console.WriteLine(last);
+
             #endregion
 
             #region [ Tuples ]
@@ -68,14 +87,16 @@ namespace Part07
             //Perhaps the most notable improvement to C# 7 is explicit tuple support.
             //Tuples provide a simple way to store a set of related values:
 
-            var tuple = ("Soroush", 39);
+            var tuple = ("Soroush", 39 , "Male");
             Console.WriteLine(tuple.Item1); // Soroush
             Console.WriteLine(tuple.Item2); // 39
+            Console.WriteLine(tuple.Item3); // "Male"
 
 
             var tuple2 = (name: "Soroush", age: 39);
             Console.WriteLine(tuple2.name); // Soroush
             Console.WriteLine(tuple2.age); // 39
+           
 
             //Tuples implicitly support the deconstruction pattern,
             //so you can easily deconstruct them into individual variables
@@ -98,14 +119,32 @@ namespace Part07
             var (Hour, Minute, Second) = (now.Hour, now.Minute, now.Second);
             Console.WriteLine($"{Hour} : {Minute} : {Second}");
 
+            var (H, M, S) = (now.Hour, now.Minute, now.Second);
+            Console.WriteLine($"{H} : {M} : {S}");
+
+
+            var pc = new PersianCalendar();
+
+            var (Y, Mon, D) = (pc.GetYear(now), pc.GetMonth(now), pc.GetDayOfMonth(now));
+
+            Console.WriteLine($"{Y}/{Mon}/{D}");
+
             #endregion
 
             #region [ Default keyword ]
             //From C# 7.1, you can omit the type when using the default keyword, if
             //the type can be inferred
 
-            decimal number = 0; // int
-            decimal number2 = 0M; // decimal
+
+            var pointingNumber1 = 2.3;
+            var pointingNumber2 = 2.3F;
+
+            float pointingNumber3 = default;
+
+            //var pointingNumber4 = default;
+
+            var number = 0; // int
+            var number2 = 0M; // decimal
             decimal number3 = default; // decimal
 
             Console.WriteLine($"{number}{number2}{number3}"); 

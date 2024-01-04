@@ -8,9 +8,19 @@
         /// </summary>
         public int ID { get; init; }
 
+        public string SSN { get; private set; } //= "Bad Practice";
+
         public Person()
         {
+            //SSN = string.Empty;
+            SSN = null!; //Null Forgiving Operator
+        }
+
+        public Person(string ssn)
+        {
             ID = 1234;
+            SSN = ssn;
+
         }
 
         //This makes it possible to create immutable (read-only) types that can be
@@ -60,16 +70,16 @@
     {
         // Pattern-matching improvements
 
-        //string GetWeightCategory(decimal bmi)
-        //{
-        //    return bmi switch
-        //    {
-        //        < 18.5m => "underweight",
-        //        < 25m => "normal",
-        //        < 30m => "overweight",
-        //        _ => "obese"
-        //    };
-        //}
+        string GetWeightCategory0(decimal bmi)
+        {
+            return bmi switch
+            {
+                < 18.5m => "underweight",
+                < 25m => "normal",
+                < 30m => "overweight",
+                _ => "obese"
+            };
+        }
 
         internal static string GetWeightCategory(decimal bmi) => bmi switch
         {
@@ -79,18 +89,18 @@
             _ => "obese"
         };
 
-        //internal static bool IsVowel(char c)
-        //{
-        //    return c is 'a' or 'e' or 'i' or 'o' or 'u';
-        //}
+        internal static bool IsVowel0(char c)
+        {
+            return c is 'a' or 'e' or 'i' or 'o' or 'u';
+        }
 
         internal static bool IsVowel(char c) => c is 'a' or 'e' or 'i' or 'o' or 'u';
 
 
-        //internal static bool IsLetter(char c)
-        //{
-        //    return c is (>= 'a' and <= 'z') or (>= 'A' and <= 'Z');
-        //}
+        internal static bool IsLetter0(char c)
+        {
+            return c is (>= 'a' and <= 'z') or (>= 'A' and <= 'Z');
+        }
 
         internal static bool IsLetter(char c) => c is (>= 'a' and <= 'z') or (>= 'A' and <= 'Z');
 

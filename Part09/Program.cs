@@ -1,5 +1,4 @@
 ﻿
-
 #region [ Top-level statements ]
 
 // With top-level statements , you can
@@ -15,12 +14,16 @@ Console.WriteLine("Hello, World!");
 
 #region [ Init-only setters ]
 
-//var p1 = new Person();
-//p1.ID = 123;
+var person1 = new Person();
+//person1.ID = 123; // Init-only property or indexer 'Person.ID' can only be assigned in an object initializer, or on 'this' or 'base' in an instance constructor or an 'init' accessor.	
+//person1.SSN = ""; //The property or indexer 'Person.SSN' cannot be used in this context because the set accessor is inaccessible	
 
 //This behaves like a read-only property, except that it can also be set via an
 //object initializer
-var person1 = new Person() { ID = 123 };
+var person2 = new Person(ssn:"1122334455") 
+{
+    ID = 123 
+};
 
 #endregion
 
@@ -28,6 +31,7 @@ var person1 = new Person() { ID = 123 };
 #region [ Record ]
 var p1 = new Point(2, 3);
 var p2 = p1 with { Y = 4 };
+
 
 Console.WriteLine(p1);
 Console.WriteLine(p2);
